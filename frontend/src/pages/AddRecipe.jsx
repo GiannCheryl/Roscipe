@@ -3,15 +3,18 @@ import { useNavigate } from 'react-router-dom';
 import { supabase } from '../lib/supabase.js'
 
 function AddRecipe() {
-  const [categories, setCategories] = useState([]);
+  const navigate = useNavigate();
 
-  const [title, setTitle ] = useState('');
+  const [title, setTitle] = useState('');
   const [categoryId, setCategoryId] = useState('');
   const [ingredients, setIngredients] = useState('');
   const [instructions, setInstructions] = useState('');
   const [notes, setNotes] = useState('');
+  const [image, setImage] = useState(null);
 
-  const navigate = useNavigate();
+  const [categories, setCategories] = useState([]);
+  const [saving, setSaving] = useState(false);
+
 
   useEffect(() => {
     fetchCategories();
@@ -20,20 +23,26 @@ function AddRecipe() {
   async function fetchCategories() {
     const { data, error } = await supabase
       .from('categories')
-      .select('id, name, icon')
-      .order('id', { ascending: true });
+      .select('*')
+      .order('name', { ascending: true });
     
       if (error) {
       console.error('Error fetching categories:', error);
-    } else {
-      setCategories(data);
+      return;
     }
 
     setCategories(data);
   }
 
-  async function handleSubmit(event) {
-    event.preventDefault();
+  async function handleSubmit(e) {
+    e.preventDefault();
+
+    if (!title || !categoryId || !ingredients || !instructions){
+      alert("Please fill in all the required fields.");
+      return;
+    }
+
+    setSaving(true);
 
     const { data, error } = await supabase
       .from('recipes')
@@ -50,11 +59,17 @@ function AddRecipe() {
       if (error) {
         console.error('Error adding recipe:', error);
         alert('Failed to add recipe.');
+        setSaving(false);
         return;
       }
 
       console.log('Recipe added:', data);
       alert('Recipe added successfully!');
+
+      setSaving(false);
+
+      // kalau mau otomatis di arahin ke homepage
+      // navigate('/');
 
       // Reset form fields
       setTitle('');
@@ -134,8 +149,9 @@ function AddRecipe() {
         </div>  
 
         <div className="form-button">
-          <button type="submit" className="submit-button">
-            Save
+          <button type="submit" className="submit-button"
+          disabled={saving}>
+            {saving ? "Saving..." : "Save"}
           </button>
           
           <button type="button"
