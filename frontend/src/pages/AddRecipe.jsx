@@ -185,11 +185,15 @@ function AddRecipe() {
         </div>  
 
         {/* Image */}
-        <input
-          type="file"
-          accept="image/*"
-          onChange={(e) => setImage(e.target.files[0])}
-        />
+        <div className='form-group'>
+          <label>Image</label>
+          <input
+            type="file"
+            accept="image/*"
+            onChange={(e) => setImage(e.target.files[0])}
+          />
+        </div>
+      
 
         <div className="form-button">
           <button type="submit" className="submit-button"
