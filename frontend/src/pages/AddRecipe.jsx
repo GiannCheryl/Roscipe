@@ -34,6 +34,33 @@ function AddRecipe() {
     setCategories(data);
   }
 
+  const uploadImage = async () => {
+    if (!image) return null;
+
+    const formData = new FormData();
+
+    formData.append('file', image);
+    formData.append(
+      'upload_preset',
+      import.meta.env.VITE_CLOUDINARY_UPLOAD_PRESET
+    );
+
+    const response = await fetch(
+      `http://api.cloudinary.com/v1_1/${import.meta.env.VITE_CLOUDINARY_CLOUD_NAME}/image/upload`, {
+        method: 'POST',
+        body: formData,
+      }
+    );
+
+    if (!response.ok){
+      throw new Error('Gagal upload gambar');
+    }
+
+    const data = await response.json();
+
+    return data.secure_url;
+  }
+
   async function handleSubmit(e) {
     e.preventDefault();
 
@@ -44,7 +71,12 @@ function AddRecipe() {
 
     setSaving(true);
 
-    const { data, error } = await supabase
+    try {
+      // Upload image ke Cloudinary
+      const imageUrl = await uploadImage();
+
+      // Simpan recipe + image URL ke supabase
+      const { data, error } = await supabase
       .from('recipes')
       .insert([
         {
@@ -66,8 +98,6 @@ function AddRecipe() {
       console.log('Recipe added:', data);
       alert('Recipe added successfully!');
 
-      setSaving(false);
-
       // kalau mau otomatis di arahin ke homepage
       // navigate('/');
 
@@ -77,6 +107,12 @@ function AddRecipe() {
       setIngredients('');
       setInstructions('');
       setNotes('');
+    } catch (error) {
+      console.error('Error:', error);
+      alert('Failed to add recipe.');
+    } finally {
+      setSaving(false);
+    }
   }
 
   return (
@@ -147,6 +183,13 @@ function AddRecipe() {
             placeholder="Enter notes (optional)..."
           />
         </div>  
+
+        {/* Image */}
+        <input
+          type="file"
+          accept="image/*"
+          onChange={(e) => setImage(e.target.files[0])}
+        />
 
         <div className="form-button">
           <button type="submit" className="submit-button"
