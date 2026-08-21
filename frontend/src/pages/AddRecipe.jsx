@@ -14,6 +14,7 @@ function AddRecipe() {
 
   const [categories, setCategories] = useState([]);
   const [saving, setSaving] = useState(false);
+  const [showSuccess,setShowSuccess] = useState(false);
 
 
   useEffect(() => {
@@ -96,10 +97,7 @@ function AddRecipe() {
       }
 
       console.log('Recipe added:', data);
-      alert('Recipe added successfully!');
-
-      // kalau mau otomatis di arahin ke homepage
-      // navigate('/');
+      setShowSuccess(true);
 
       // Reset form fields
       setTitle('');
@@ -107,6 +105,10 @@ function AddRecipe() {
       setIngredients('');
       setInstructions('');
       setNotes('');
+
+      // kalau mau otomatis di arahin ke homepage
+      navigate('/');
+
     } catch (error) {
       console.error('Error:', error);
       alert('Failed to add recipe.');
@@ -207,8 +209,26 @@ function AddRecipe() {
             Cancel
           </button>
         </div>
-        
       </form>
+
+      {showSuccess && (
+        <div className='success-overlay'>
+          <div className='success-popup'>
+            <div className='success-icon'>
+              ✓
+            </div>
+
+            <h2>Recipe Added!</h2>
+            <p>Resep telah berhasil di save.</p>
+            <button
+              type='button'
+              onClick={() => setShowSuccess(false)}
+            >
+              Ok
+            </button>
+          </div>
+        </div>
+      )}
     </div>
   );
 }
