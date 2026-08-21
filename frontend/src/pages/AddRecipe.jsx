@@ -86,6 +86,7 @@ function AddRecipe() {
           ingredients: ingredients,
           instructions: instructions,
           notes: notes || null,
+          image_url: imageUrl,
         },
       ]).select();
 

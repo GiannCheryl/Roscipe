@@ -1,11 +1,25 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
-function RecipeCard({ recipe, onEdit, onDelete }) {
+function RecipeCard({ recipe, onEdit, onDelete, openMenuId, setOpenMenuId }) {
   const navigate = useNavigate();
-  const [showMenu, setShowMenu] = useState(false);
+  // const [showMenu, setShowMenu] = useState(false);
   const [showDeleteConfirm, setShowDeleteConfirm ] = useState(false);
 
+  // useEffect(() => {
+  //   const handleClickOutside = () => {
+  //     setShowMenu(false);
+  //   };
+
+  //   if (showMenu) {
+  //     document.addEventListener('click', handleClickOutside);
+  //   }
+
+  //   return () => {
+  //     document.addEventListener('click', handleClickOutside)
+  //   };
+  // }, [showMenu]);
+  
   return(
     <>
       <div 
@@ -32,20 +46,23 @@ function RecipeCard({ recipe, onEdit, onDelete }) {
               className='menu-button'
               onClick={(e) => {
                 e.stopPropagation();
-                setShowMenu(!showMenu);
+                setOpenMenuId(
+                  openMenuId === recipe.id ? null : recipe.id
+                );
               }}
             >
               ⋮
             </button>
 
-            {showMenu && (
+            {openMenuId === recipe.id && (
               <div 
                 className='recipe-dropdown'
-                onClick={(e) => e.stopPropagation()}>
+                onClick={(e) => e.stopPropagation()}
+              >
                 <button
                   type='button'
                   onClick={() => {
-                    setShowMenu(false);
+                    setOpenMenuId(null);
                     onEdit(recipe);
                   }}
                 >
@@ -55,7 +72,7 @@ function RecipeCard({ recipe, onEdit, onDelete }) {
                 <button
                   type='button'
                   onClick={() => {
-                    setShowMenu(false);
+                    setOpenMenuId(null);
                     setShowDeleteConfirm(true);
                   }}
                 >

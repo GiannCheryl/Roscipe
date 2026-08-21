@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import Sidebar from "../components/Sidebar";
+import RecipeCard from "../components/RecipeCard";
 import { supabase } from "../lib/supabase";
 
 function Homepage() {
@@ -44,7 +45,6 @@ function Homepage() {
         <main className="main-content">
           <div className="welcome"> 
             <h1>ROSCIPE</h1>
-            <p>Discover delicious recipes for every meal of the day!</p>
             <div className="search-box">
               <input
                 type="text"
@@ -66,48 +66,18 @@ function Homepage() {
 
             <div className="recipe-grid">
               {filteredRecipes.map((recipe) => (
-                <div
-                  className="recipe-card"
+                <RecipeCard 
                   key={recipe.id}
-                >
-                  <div className="recipe-image">
-                    {recipe.image_url ? (
-                      <img
-                        src={recipe.image_url}
-                        alt={recipe.title}
-                      />
-                    ):(
-                      <div className="no-image">
-                        No Image
-                      </div>
-                    )}
-                  </div>
-
-                  <div className="recipe-card-footer">
-                    <h3>{recipe.title}</h3>
-
-                    <div className="recipe-menu-container">
-                      <button className="menu-button"
-                      onClick={() => 
-                        setOpenMenuId(openMenuId === recipe.id ? null : recipe.id
-                      )}> ⋮ </button>
-
-                      {openMenuId === recipe.id && (
-                        <div className="dropdown-menu recipe-dropdown">
-                          <button className="dropdown-item">
-                            Edit Recipe
-                          </button>
-
-                          <button className="dropdown-item">
-                            Delete Recipe
-                          </button>
-                        </div>
-                      )}
-                    </div>
-
-                  
-                  </div>
-                </div>
+                  recipe={recipe}
+                  openMenuId={openMenuId}
+                  setOpenMenuId={setOpenMenuId}
+                  onEdit={(recipe) => {
+                    console.log("Edit recipe:", recipe);
+                  }}
+                  onDelete={(id) => {
+                    console.log("Delete recipe:", id)
+                  }}
+                />
               ))}
             </div>
           </section>
