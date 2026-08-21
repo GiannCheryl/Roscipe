@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom';
 function RecipeCard({ recipe, onEdit, onDelete }) {
   const navigate = useNavigate();
   const [showMenu, setShowMenu] = useState(false);
-  const [showDeleteMenu, setShowDeleteMenu ] = useState(false);
+  const [showDeleteConfirm, setShowDeleteConfirm ] = useState(false);
 
   return(
     <>
@@ -30,13 +30,18 @@ function RecipeCard({ recipe, onEdit, onDelete }) {
             <button
               type='button'
               className='menu-button'
-              onClick={() => setShowMenu(!showMenu)}
+              onClick={(e) => {
+                e.stopPropagation();
+                setShowMenu(!showMenu);
+              }}
             >
               ⋮
             </button>
 
             {showMenu && (
-              <div className='recipe-dropdown'>
+              <div 
+                className='recipe-dropdown'
+                onClick={(e) => e.stopPropagation()}>
                 <button
                   type='button'
                   onClick={() => {
@@ -51,7 +56,7 @@ function RecipeCard({ recipe, onEdit, onDelete }) {
                   type='button'
                   onClick={() => {
                     setShowMenu(false);
-                    onDelete(recipe.id);
+                    setShowDeleteConfirm(true);
                   }}
                 >
                   Delete Recipe
@@ -61,6 +66,38 @@ function RecipeCard({ recipe, onEdit, onDelete }) {
           </div>
         </div>
       </div>
+
+      {showDeleteConfirm && (
+        <div className='delete-overlay'>
+          <div
+            className='detele-group'
+            onClick={(e) => e.stopPropagation()}
+          >
+            <h2>Delete Recipe?</h2>
+            <p>Are you sure you want to delete <strong>"{recipe.title}"</strong>?</p>
+
+            <div className='delete-actions'>
+              <button
+                type='button'
+                className='delete-button'
+                onClick={() => {
+                  setShowDeleteConfirm(false);
+                  onDelete(recipe.id)
+                }}  
+              >
+                Delete
+              </button>
+
+              <button 
+                type='button'
+                className='cancel-button'
+                onClick={() => setShowDeleteConfirm(false)}>
+                  Cancel
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
     </>
   );
 }
