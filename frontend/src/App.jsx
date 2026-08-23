@@ -2,6 +2,7 @@ import { BrowserRouter, Routes, Route} from 'react-router-dom';
 import Navbar from './components/Navbar';
 import Homepage from './pages/Homepage';
 import AddRecipe from './pages/AddRecipe';
+import RecipeDetail from './pages/RecipeDetail';
 
 function App() {
   return (
@@ -10,6 +11,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Homepage />} />
         <Route path="/add-recipe" element={<AddRecipe />} />
+        <Route path="/recipe/:id" element={<RecipeDetail/>}/>
       </Routes>
     </BrowserRouter>
   );

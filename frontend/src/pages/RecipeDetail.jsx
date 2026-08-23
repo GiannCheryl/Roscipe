@@ -3,7 +3,7 @@ import { useParams } from "react-router-dom"
 import { supabase } from '../lib/supabase.js'
 
 function RecipeDetail()  {
-  const {id} = useParams;
+  const {id} = useParams();
   const [recipe, setRecipe] = useState(null);
   const [loading, setLoading] = useState(null);
 

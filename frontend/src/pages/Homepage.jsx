@@ -58,9 +58,8 @@ function Homepage() {
           <section className="recipes-section">
             <div className="recipes-header">
               <h2>All Recipes</h2>
-              <span>( {filteredRecipes.length} )</span>
+              <span>( {recipes.length} )</span>
 
-              <p>Recipes: {recipes.length}</p>
               <p>Filtered: {filteredRecipes.length}</p>
             </div>
 
