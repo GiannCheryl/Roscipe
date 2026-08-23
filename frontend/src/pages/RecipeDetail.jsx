@@ -51,6 +51,7 @@ function RecipeDetail()  {
       .map((item) => item.trim())
       .filter((item) => item !== '')
       : []
+      
   return(
     <div className="recipe-detail-page">
       <h1>{recipe.title}</h1>

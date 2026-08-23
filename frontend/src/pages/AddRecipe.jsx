@@ -168,11 +168,11 @@ function AddRecipe() {
 
         {/* Instructions */}
         <div className="form-group">
-          <label>Instructions</label>
+          <label>Cooking Steps</label>
           <textarea
             value={instructions}
             onChange={(e) => setInstructions(e.target.value)}
-            placeholder="Enter instructions..."
+            placeholder="Enter cooking steps..."
             required
           />
         </div>
