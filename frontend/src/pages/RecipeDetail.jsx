@@ -70,7 +70,10 @@ function RecipeDetail()  {
           <h2>Ingredients</h2>
 
           <ul>
-            {ingredients.map((ingredient, index) => (
+            {recipe.ingredients
+              .split(/\r?\n/)
+              .filter(ingredient => ingredient.trim() !== '')
+              .map((ingredient, index) => (
               <li key={index}>{ingredient}</li>
             ))}
           </ul>
@@ -81,7 +84,10 @@ function RecipeDetail()  {
           <h2>Cooking Steps</h2>
 
           <ol>
-            {instructions.map((step, index) => (
+            {recipe.instructions
+              .split(/\r?\n/)
+              .filter(step => step.trim() !== '')
+              .map((step, index) => (
               <li key={index}>{step}</li>
             ))}
           </ol>

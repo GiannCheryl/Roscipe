@@ -51,11 +51,11 @@ function EditRecipe() {
     }
 
     setTitle(data.title || '');
-    setCategoryId(data.category_id || '');
+    setCategoryId(data.category_id ? String(data.category_id) : '');
     setIngredients(data.ingredients || '');
     setInstructions(data.instructions || '');
     setNotes(data.notes || '');
-    setCurrentImage(data.image_url || '');
+    setCurrentImageUrl(data.image_url || '');
 
     setLoading(false);
   }
@@ -173,14 +173,14 @@ function EditRecipe() {
                 Select Category
               </option>
 
-              {categories.map((category) => {
+              {categories.map((category) => (
                 <option
                   key={category.id}
                   value={category.id}
                 >
                   {category.icon}{category.name}
                 </option>
-              })}
+              ))}
 
             </select>  
           </div>
@@ -191,7 +191,7 @@ function EditRecipe() {
 
             <textarea
               value={ingredients}
-              onChange={(e) => setTitle(e.target.value)}
+              onChange={(e) => setIngredients(e.target.value)}
               placeholder="Enter ingredients..."
               required
             />
@@ -203,7 +203,7 @@ function EditRecipe() {
 
             <textarea
               value={instructions}
-              onChange={(e) => setTitle(e.target.value)}
+              onChange={(e) => setInstructions(e.target.value)}
               placeholder="Enter cooking steps..."
               required
             />
@@ -215,7 +215,7 @@ function EditRecipe() {
 
             <textarea
               value={notes}
-              onChange={(e) => setTitle(e.target.value)}
+              onChange={(e) => setNotes(e.target.value)}
               placeholder="Enter notes (optional)..."
             />
           </div>
@@ -224,7 +224,7 @@ function EditRecipe() {
           <div className="form-group">
               <label>Image</label>
 
-              {currentImage && (
+              {currentImageUrl && (
                   <div className="current-image">
                     <img
                       src={currentImageUrl}
