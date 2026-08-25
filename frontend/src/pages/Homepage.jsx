@@ -2,11 +2,13 @@ import { useEffect, useState } from "react";
 import Sidebar from "../components/Sidebar";
 import RecipeCard from "../components/RecipeCard";
 import { supabase } from "../lib/supabase";
+import { useNavigate } from "react-router-dom";
 
 function Homepage() {
   const [recipes, setRecipes] = useState([]);
   const [search, setSearch] = useState('');
   const [openMenuId, setOpenMenuId] = useState(null);
+  const navigate = useNavigate();
 
   useEffect(() => {
     fetchRecipes();
@@ -71,7 +73,7 @@ function Homepage() {
                   openMenuId={openMenuId}
                   setOpenMenuId={setOpenMenuId}
                   onEdit={(recipe) => {
-                    console.log("Edit recipe:", recipe);
+                    navigate(`/edit-recipe/${recipe.id}`);
                   }}
                   onDelete={(id) => {
                     console.log("Delete recipe:", id)
