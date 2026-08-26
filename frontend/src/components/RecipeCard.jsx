@@ -85,31 +85,27 @@ function RecipeCard({ recipe, onEdit, onDelete, openMenuId, setOpenMenuId }) {
       </div>
 
       {showDeleteConfirm && (
-        <div className='delete-overlay'>
-          <div
-            className='detele-group'
-            onClick={(e) => e.stopPropagation()}
-          >
+        <div className='popup-overlay'>
+          <div className='popup' onClick={(e) => e.stopPropagation()}>
             <h2>Delete Recipe?</h2>
-            <p>Are you sure you want to delete <strong>"{recipe.title}"</strong>?</p>
-
-            <div className='delete-actions'>
+            <p>Are you sure you want to delete <strong>"{recipe.title}"</strong></p>
+            <div className='delete-action'>
               <button
                 type='button'
                 className='delete-button'
                 onClick={() => {
-                  setShowDeleteConfirm(false);
+                  setShowDeleteConfirm(false)
                   onDelete(recipe.id)
-                }}  
+                }}
               >
                 Delete
               </button>
-
-              <button 
+              <button
                 type='button'
-                className='cancel-button'
-                onClick={() => setShowDeleteConfirm(false)}>
-                  Cancel
+                className='popup-cancel-button'
+                onClick={() => setShowDeleteConfirm(false)}
+              >
+                Cancel
               </button>
             </div>
           </div>

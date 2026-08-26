@@ -239,8 +239,8 @@ body {
   margin: 0;
 }
 
-/* success popup */
-.success-overlay {
+/* success dan delete popup confirmation */
+.popup-overlay {
   position: fixed;
   inset: 0;
   z-index: 9999;
@@ -254,7 +254,7 @@ body {
   -webkit-backdrop-filter: blur(6px);
 }
 
-.success-popup {
+.popup {
   width: 360px;
   max-width: 90%;
   padding: 32px 28px;
@@ -286,17 +286,17 @@ body {
   font-weight: bold;
 }
 
-.success-popup h2 {
+.popup h2 {
   margin: 0 0 8px;
 }
 
-.success-popup p {
+.popup p {
   margin: 0 0 24px;
 
   color: #666;
 }
 
-.success-popup button {
+.popup button {
   padding: 10px 32px;
 
   border: none;
@@ -305,6 +305,43 @@ body {
   cursor: pointer;
 
   font-size: 15px;
+}
+
+.delete-actions {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  gap: 12px;
+}
+
+.popup-cancel-button,
+.delete-button {
+  padding: 10px 24px;
+
+  border-radius: 8px;
+
+  cursor: pointer;
+  width: 100px;
+}
+
+.cancel-button {
+  border: 1px solid #ccc;
+  background: white;
+}
+
+.delete-button {
+  border: none;
+  background: #d9534f;
+  color: white;
+}
+
+.delete-button:hover {
+  background-color: #8b0f3f;
+  color: white;
+}
+
+.cancel-button:hover {
+  background-color: #ddd;
 }
 
 /* Recipe Card */
@@ -401,68 +438,6 @@ body {
   position: relative;
 }
 
-.delete-overlay {
-  position: fixed;
-  inset: 0;
-  z-index: 9999;
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  background: rgba(0, 0, 0, 0.25);
-
-  backdrop-filter: blur(6px);
-  -webkit-backdrop-filter: blur(6px);
-}
-
-.delete-popup {
-  width: min(90%, 400px);
-
-  padding: 30px;
-
-  background: white;
-  border-radius: 16px;
-
-  text-align: center;
-
-  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
-}
-
-.delete-popup h2 {
-  margin-bottom: 10px;
-}
-
-.delete-popup p {
-  color: #666;
-  margin-bottom: 25px;
-}
-
-.delete-actions {
-  display: flex;
-  justify-content: center;
-  gap: 12px;
-}
-
-.cancel-button,
-.delete-button {
-  padding: 10px 24px;
-
-  border-radius: 8px;
-
-  cursor: pointer;
-}
-
-.cancel-button {
-  border: 1px solid #ccc;
-  background: white;
-}
-
-.delete-button {
-  border: none;
-  background: #d9534f;
-  color: white;
-}
 
 /* Homepage */
 .recipes-section {

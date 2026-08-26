@@ -16,6 +16,7 @@ function EditRecipe() {
   const [categories, setCategories] = useState([]);
   const [loading, setLoading] = useState(true);
   const [saving, setSaving] = useState(false);
+  const [showSuccess, setShowSuccess] = useState(false);
 
   useEffect(() => {
     fetchCategories();
@@ -123,7 +124,7 @@ function EditRecipe() {
       }
 
       console.log('Recipe updated.', data);
-      navigate(`/recipe/${id}`);
+      setShowSuccess(true);
     }catch(error){
       console.error('Error:', error);
       alert('Failed to update recipe.');
@@ -259,6 +260,25 @@ function EditRecipe() {
             </button>
           </div>
         </form>
+
+        {showSuccess && (
+          <div className= "popup-overlay">
+            <div className="popup">
+              <div className="success-icon">
+                ✓
+              </div>
+              
+              <h2>Recipe Updated!</h2>
+              <p>Resep telah berhasil di update.</p>
+              <button
+                type="button"
+                onClick={() => navigate(`/recipe/${id}`)}
+              >
+                Ok
+              </button>
+            </div>
+          </div>
+        )}
     </div>
   );
 }

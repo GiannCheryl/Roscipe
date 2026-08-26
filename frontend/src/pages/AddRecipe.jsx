@@ -108,7 +108,7 @@ function AddRecipe() {
       setNotes('');
 
       // kalau mau otomatis di arahin ke homepage
-      navigate('/');
+      // navigate('/');
 
     } catch (error) {
       console.error('Error:', error);
@@ -199,22 +199,27 @@ function AddRecipe() {
       
 
         <div className="form-button">
-          <button type="submit" className="submit-button"
-          disabled={saving}>
+          <button 
+            type="submit" 
+            className="submit-button"
+            disabled={saving}
+          >
             {saving ? "Saving..." : "Save"}
           </button>
           
-          <button type="button"
-          className="cancel-button"
-          onClick={() => navigate("/")}>
+          <button 
+            type="button"
+            className="cancel-button"
+            onClick={() => navigate("/")}
+          >
             Cancel
           </button>
         </div>
       </form>
 
       {showSuccess && (
-        <div className='success-overlay'>
-          <div className='success-popup'>
+        <div className='popup-overlay'>
+          <div className='popup'>
             <div className='success-icon'>
               ✓
             </div>
