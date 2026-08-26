@@ -46,9 +46,6 @@ function Navbar() {
                 <button className="dropdown-item">
                   Edit Category
                 </button>
-                <button className="dropdown-item">
-                  Delete Category
-                </button>
               </div>
             )}
 

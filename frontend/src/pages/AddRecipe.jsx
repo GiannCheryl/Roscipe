@@ -225,7 +225,7 @@ function AddRecipe() {
             </div>
 
             <h2>Recipe Added!</h2>
-            <p>Resep telah berhasil di save.</p>
+            <p>Recipe successfully added.</p>
             <button
               type='button'
               onClick={() => setShowSuccess(false)}

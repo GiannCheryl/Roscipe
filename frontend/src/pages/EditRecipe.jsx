@@ -267,9 +267,9 @@ function EditRecipe() {
               <div className="success-icon">
                 ✓
               </div>
-              
+
               <h2>Recipe Updated!</h2>
-              <p>Resep telah berhasil di update.</p>
+              <p>Recipe successfully updated.</p>
               <button
                 type="button"
                 onClick={() => navigate(`/recipe/${id}`)}

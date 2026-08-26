@@ -1,7 +1,9 @@
 import { useState, useEffect } from "react";
 import { supabase } from "../lib/supabase.js";
+import { useNavigate } from "react-router-dom";
 
 function Sidebar() {
+  const navigate = useNavigate();
   const [categories, setCategories] = useState([]);
   const [recipes, setRecipes] = useState([]);
 
@@ -14,7 +16,7 @@ function Sidebar() {
     const { data, error } = await supabase
       .from("categories")
       .select("*")
-      .order("id", { ascending: true });
+      .order("name", { ascending: true });
 
     console.log("Categories data:", data);
     console.log("Categories error:", error);
@@ -43,8 +45,27 @@ function Sidebar() {
 
   return (
     <aside className="sidebar">
-      <h2>Categories</h2>
-
+      <div className="category-header">
+        <h2>Categories</h2>
+        <div className="category-actions">
+          <button
+            type="button"
+            className="category-action-button"
+            onClick={() => navigate("/add-category")}
+          >
+            +
+          </button>
+          <button
+              type="button"
+              className="category-action-button"
+              onClick={() => navigate("/manage-categories")}
+            >
+              ✎  
+          </button>
+        </div>
+        
+      </div>
+      
       <div className="category-list">
         {categories.map((category) => (
           <label 

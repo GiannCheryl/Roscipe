@@ -139,6 +139,39 @@ body {
   color: #777;
 }
 
+.category-header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+}
+
+.category-header h2 {
+  margin: 0;
+}
+
+.category-actions {
+  display: flex;
+  gap: 4px;
+}
+
+.category-action-button {
+  width: 30px;
+  height: 30px;
+  padding: 0;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.category-action-button:hover {
+  transform: scale(1.1);
+}
+
 /* Content */
 .content {
   display: flex;
@@ -614,3 +647,4 @@ body {
   margin: 0 auto;
   padding: 40px 30px;
 }
+
