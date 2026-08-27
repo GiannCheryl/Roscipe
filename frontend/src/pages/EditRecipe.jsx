@@ -12,6 +12,7 @@ function EditRecipe() {
   const [instructions, setInstructions] = useState('');
   const [notes, setNotes] = useState('');
   const [image, setImage] = useState(null);
+  
   const [currentImageUrl, setCurrentImageUrl] = useState('');
   const [categories, setCategories] = useState([]);
   const [loading, setLoading] = useState(true);

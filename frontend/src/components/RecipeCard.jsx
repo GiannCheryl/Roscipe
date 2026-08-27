@@ -6,20 +6,6 @@ function RecipeCard({ recipe, onEdit, onDelete, openMenuId, setOpenMenuId }) {
   // const [showMenu, setShowMenu] = useState(false);
   const [showDeleteConfirm, setShowDeleteConfirm ] = useState(false);
 
-  // useEffect(() => {
-  //   const handleClickOutside = () => {
-  //     setShowMenu(false);
-  //   };
-
-  //   if (showMenu) {
-  //     document.addEventListener('click', handleClickOutside);
-  //   }
-
-  //   return () => {
-  //     document.addEventListener('click', handleClickOutside)
-  //   };
-  // }, [showMenu]);
-  
   return(
     <>
       <div 
