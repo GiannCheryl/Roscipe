@@ -48,10 +48,10 @@ function AddCategory() {
   }
 
   return (
-    <div className="add-category">
+    <div className="add-category-page">
       <h1>Add Category</h1>
 
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit} className="add-category-form">
         {/* Category Name */}
         <div className="form-group">
           <label>Category Name</label>

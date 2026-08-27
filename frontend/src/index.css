@@ -648,3 +648,21 @@ body {
   padding: 40px 30px;
 }
 
+
+/* Add Category */
+.add-category-page {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 40px 30px;
+}
+
+.add-category-page h1 {
+  text-align: center;
+  margin-bottom: 35px;
+}
+
+.add-category-form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
