@@ -666,3 +666,74 @@ body {
   flex-direction: column;
   gap: 20px;
 }
+
+/* Manage Categories */
+
+.manage-categories-page {
+  padding: 30px;
+}
+
+.manage-categories-page h1 {
+  margin-bottom: 25px;
+}
+
+.manage-categories-content {
+  display: flex;
+  gap: 40px;
+  align-items: flex-start;
+}
+
+.category-list-section {
+  flex: 1;
+}
+
+.edit-category-section {
+  flex: 1;
+}
+
+.category-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px;
+  margin-bottom: 10px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+}
+
+.category-info {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.category-actions {
+  display: flex;
+  gap: 10px;
+}
+
+.form-group {
+  margin-bottom: 15px;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+.form-group input,
+.form-group textarea {
+  width: 100%;
+  padding: 10px;
+  box-sizing: border-box;
+}
+
+.form-group textarea {
+  min-height: 120px;
+  resize: vertical;
+}
+
+.form-actions {
+  display: flex;
+  gap: 10px;
+}

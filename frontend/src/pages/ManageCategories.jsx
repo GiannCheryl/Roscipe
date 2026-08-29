@@ -62,7 +62,7 @@ function ManageCategories() {
           icon: icon,
           description: description,
         })
-        .eq("id", editingCategory)
+        .eq("id", editingCategory.id)
         .select();
 
       if(error){
@@ -123,6 +123,77 @@ function ManageCategories() {
   return (
     <div className = 'manage-categories-page'>
       <h1>Manage Categories</h1>
+
+      <div className="manage-categories-content">
+        <div className="category-list-section">
+          <h2>Category List</h2>
+
+          {categories.map((category) => (
+            <div className="category-item" key={category.id}>
+              <div className="category-info">
+                <span className="category-icon">{category.icon}</span>
+
+                <span className="category-name">{category.name}</span>
+              </div>
+
+              <div className="category-actions">
+                <button
+                type="button"
+                onClick={() => handleEdit(category)}>Edit</button>
+                <button
+                type="button"
+                onClick={() => {setShowDeleteConfirm(true)}}>Delete</button>
+              </div>
+            </div>
+          ))}
+        </div>
+
+        {editingCategory && (
+          <div className="edit-category-section">
+            <h2>Edit Category</h2>
+            <form onSubmit={{handleSubmit}}>
+              <div className="form-group">
+                <label>Category Name</label>
+                <input
+                  type="text"
+                  value={name}
+                  onChange={(e) => setName(e.target.value)}
+                />
+              </div>
+              <div className="form-group">
+                <label>Icon</label>
+                <input
+                  type="text"
+                  value={icon}
+                  onChange={(e) => setIcon(e.target.value)}
+                />
+              </div>
+              <div className="form-group">
+                <label>Description</label>
+                <textarea
+                  value={description}
+                  onChange={(e) => setDescription(e.target.value)}
+                />
+              </div>
+              <div className="form-actions">
+                <button
+                  type="submit"
+                  disabled={saving}
+                >{saving ? "Updating..." : "Update"}</button>
+                <button
+                  type="button"
+                  onClick={() => {
+                    setEditingCategory(null);
+                    setName("");
+                    setIcon("");
+                    setDescription("");
+                  }}
+                >Cancel</button>
+              </div>
+            </form>
+          </div>
+        )}
+      </div>
     </div>
   )
 }
