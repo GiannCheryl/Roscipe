@@ -139,15 +139,20 @@ function ManageCategories() {
               <div className="category-actions">
                 <button
                 type="button"
+                className="submit-button"
                 onClick={() => handleEdit(category)}>Edit</button>
                 <button
                 type="button"
-                onClick={() => {setShowDeleteConfirm(true)}}>Delete</button>
+                className="cancel-button"
+                onClick={() => {
+                  setSelectedCategory(category)
+                  setShowDeleteConfirm(true)}}>Delete</button>
               </div>
             </div>
           ))}
         </div>
 
+        {/* Edit Form */}
         {editingCategory && (
           <div className="edit-category-section">
             <h2>Edit Category</h2>
@@ -178,10 +183,12 @@ function ManageCategories() {
               <div className="form-actions">
                 <button
                   type="submit"
+                  className="submit-button"
                   disabled={saving}
                 >{saving ? "Updating..." : "Update"}</button>
                 <button
                   type="button"
+                  className="cancel-button"
                   onClick={() => {
                     setEditingCategory(null);
                     setName("");

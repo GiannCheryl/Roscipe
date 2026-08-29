@@ -668,13 +668,13 @@ body {
 }
 
 /* Manage Categories */
-
 .manage-categories-page {
   padding: 30px;
 }
 
 .manage-categories-page h1 {
   margin-bottom: 25px;
+  text-align: center;
 }
 
 .manage-categories-content {
