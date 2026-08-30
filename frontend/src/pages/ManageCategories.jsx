@@ -201,6 +201,14 @@ function ManageCategories() {
           </div>
         )}
       </div>
+
+      {/* delete confirmation popup */}
+      {showDeleteConfirm && selectedCategory && (
+        <div>
+          
+        </div>
+      )}
+
     </div>
   )
 }
