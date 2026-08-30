@@ -202,10 +202,39 @@ function ManageCategories() {
         )}
       </div>
 
-      {/* delete confirmation popup */}
+      {/* Delete Confirmation Popup */}
       {showDeleteConfirm && selectedCategory && (
-        <div>
-          
+        <div className="popup-overlay">
+          <div className="popup"
+          onClick={(e) => e.stopPropagation()}
+          >
+            <h2>Delete Category?</h2>
+            <p>Are you sure you want to delete <strong>"{selectedCategory.name}"</strong>?</p>
+
+            <div className="delete-action">
+              <button
+                type="button"
+                className="delete-button"
+                onClick={() => {
+                  setShowDeleteConfirm(false);
+                  handleDelete(selectedCategory.id);
+                }}
+              >
+                Delete
+              </button>
+
+              <button
+                type="button"
+                className="popup-cancel-button"
+                onClick={() => {
+                  setShowDeleteConfirm(false);
+                  setSelectedCategory(null);
+                }}
+              >
+                Cancel
+              </button>
+            </div>
+          </div>
         </div>
       )}
 
