@@ -780,8 +780,16 @@ body {
   flex: 1;
 }
 
+.category-list-section h2 {
+  margin-bottom: 20px;
+}
+
 .edit-category-section {
   flex: 1;
+}
+
+.edit-category-section h2 {
+  margin-bottom: 20px;
 }
 
 .category-item {
@@ -792,8 +800,8 @@ body {
   margin-bottom: 10px;
   border: 1px solid #ddd;
   border-radius: 8px;
-  transition: 
-    background-color 0.2s ease, 
+  transition:
+    background-color 0.2s ease,
     transform 0.2s ease;
 }
 
@@ -844,6 +852,5 @@ body {
   display: flex;
   gap: 10px;
   align-items: center;
+  justify-content: center;
 }
-
-/* test */
