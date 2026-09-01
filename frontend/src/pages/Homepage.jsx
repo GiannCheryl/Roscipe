@@ -54,6 +54,12 @@ function Homepage() {
                 value={search}
                 onChange={(e) => setSearch(e.target.value)}
               />
+
+              <button
+                type="button"
+                className="add-recipe-button"
+                onClick={() => navigate('/add-recipe')}
+              >Add Recipe</button>
             </div>
           </div>
 

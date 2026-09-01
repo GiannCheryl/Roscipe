@@ -211,6 +211,14 @@ body {
   margin-bottom: 35px;
 }
 
+.add-recipe-button {
+  padding: 12px 20px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
 .add-recipe-form {
   display: flex;
   flex-direction: column;
@@ -548,21 +556,23 @@ body {
   cursor: pointer;
 }
 
-/* Searchbox */
+/* Search box */
 .search-box {
-  margin-top: 20px;
-  max-width: 600px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+  max-width: 650px;
+  margin: 0 auto;
 }
 
 .search-box input {
-  width: 100%;
-  padding: 12px 16px;
-
+  flex: 1;
+  padding: 12px 15px;
   border: 1px solid #ddd;
-  border-radius: 10px;
-
-  font-size: 15px;
-  outline: none;
+  border-radius: 8px;
+  font-size: 16px;
+  box-sizing: border-box;
 }
 
 .search-box input:focus {
