@@ -98,12 +98,14 @@ body {
 
 /* Sidebar */
 .sidebar {
-  width: 300px;
-  padding: 30px;
+  width: 320px;
+  padding: 30px 24px;
   flex-shrink: 0;
-  border-right: 1px solid #e5e5e5;
-  transition: width 0.3s ease;
+  border-left: 1px solid #e5e5e5;
+  border-right: none;
+  transition: width 0.3s ease, padding 0.3s ease;
   overflow: hidden;
+  order: 2;
 }
 
 .sidebar.open {
@@ -115,7 +117,7 @@ body {
   width: 0;
   padding-left: 0;
   padding-right: 0;
-  border-right: none;
+  border-left: none;
 }
 
 .sidebar h2 {
@@ -130,14 +132,33 @@ body {
   gap: 14px;
 }
 
-.category-item {
+.sidebar-category-item {
   display: flex;
   align-items: center;
   gap: 10px;
+  padding: 15px;
+  margin-bottom: 5px;
   cursor: pointer;
+  justify-content: space-between;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  transition: 
+    background-color 0.2s ease, 
+    transform 0.2s ease;
 }
 
-.category-item input {
+.sidebar-category-item:hover {
+  background-color: #f9f9f9;
+  transform: translateY(-2px);
+}
+
+.sidebar-category-item.selected {
+  background-color: #e0f7fa;
+  border-color: #00acc1;
+  transform: translateX(3px);
+}
+
+.sidebar-category-item input {
   width: 16px;
   height: 16px;
   cursor: pointer;
@@ -187,12 +208,12 @@ body {
   transform: scale(1.1);
 }
 
-/* Content */
+/* Content Sidebar*/
 .content {
   display: flex;
   align-items: flex-start;
   width: 100%;
-  padding: 32px;
+  padding: 30px;
 }
 
 .content h1 {
@@ -203,7 +224,12 @@ body {
 .main-content {
   flex: 1;
   min-width: 0;
-  /* min-height: calc(100vh - 64px); */
+  order: 1;
+  transition: margin-right 0.3s ease;
+}
+
+.main-content.sidebar-open {
+  margin-right: 30px;
 }
 
 .welcome {
@@ -432,6 +458,11 @@ body {
   border-radius: 12px;
   overflow: visible;
   animation: recipeAppear 0.2s ease-in-out;
+}
+
+.recipe-card:hover {
+  background-color: #ededed;
+  transform: translateY(-2px);
 }
 
 @keyframes recipeAppear {
@@ -812,6 +843,7 @@ body {
 .form-actions {
   display: flex;
   gap: 10px;
+  align-items: center;
 }
 
 /* test */

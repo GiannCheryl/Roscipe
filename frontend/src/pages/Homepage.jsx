@@ -52,6 +52,21 @@ function Homepage({ sidebarOpen }) {
     });
   }
 
+  async function handleDelete(id) {
+    const { error } = await supabase
+      .from('recipes')
+      .delete()
+      .eq('id', id);
+
+    if (error) {
+      console.error('Error deleting recipe:', error);
+      return;
+    }
+
+    // Remove the deleted recipe from the state
+    setRecipes((prev) => prev.filter((recipe) => recipe.id !== id));
+  }
+
   return (
     <div className="homepage">
       <div className={`content ${sidebarOpen ? 'sidebar-open' : 'sidebar-closed'}`}>
@@ -61,7 +76,7 @@ function Homepage({ sidebarOpen }) {
           selectedCategories={selectedCategory}
         />
 
-        <main className="main-content">
+        <main className={`main-content ${sidebarOpen ? 'sidebar-open' : ''}`}>
           <div className="welcome"> 
             <h1>ROSCIPE</h1>
             <div className="search-box">
@@ -98,9 +113,7 @@ function Homepage({ sidebarOpen }) {
                   onEdit={(recipe) => {
                     navigate(`/edit-recipe/${recipe.id}`);
                   }}
-                  onDelete={(id) => {
-                    console.log("Delete recipe:", id)
-                  }}
+                  onDelete={handleDelete}
                 />
               ))}
             </div>

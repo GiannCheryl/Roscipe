@@ -69,7 +69,7 @@ function Sidebar( { isOpen, onCategorySelect, selectedCategories } ) {
       <div className="category-list">
         {categories.map((category) => (
           <label 
-            className={`category-item ${selectedCategories.includes(category.id) ? 'selected' : ''}`}
+            className={`sidebar-category-item ${selectedCategories.includes(category.id) ? 'selected' : ''}`}
             key={category.id}
           >
             <input 

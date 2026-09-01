@@ -228,7 +228,10 @@ function AddRecipe() {
             <p>Recipe successfully added.</p>
             <button
               type='button'
-              onClick={() => setShowSuccess(false)}
+              onClick={() => {
+                setShowSuccess(false)
+                navigate('/')
+              }}
             >
               Ok
             </button>
