@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { supabase } from "../lib/supabase.js";
 import { useNavigate } from "react-router-dom";
 
-function Sidebar() {
+function Sidebar( { isOpen, onCategorySelect, selectedCategories } ) {
   const navigate = useNavigate();
   const [categories, setCategories] = useState([]);
   const [recipes, setRecipes] = useState([]);
@@ -44,7 +44,7 @@ function Sidebar() {
   }
 
   return (
-    <aside className="sidebar">
+    <aside className={`sidebar ${isOpen ? 'open' : 'closed'}`}>
       <div className="category-header">
         <h2>Categories</h2>
         <div className="category-actions">
@@ -69,10 +69,14 @@ function Sidebar() {
       <div className="category-list">
         {categories.map((category) => (
           <label 
-            className="category-item"
+            className={`category-item ${selectedCategories.includes(category.id) ? 'selected' : ''}`}
             key={category.id}
           >
-            <input type="checkbox" />
+            <input 
+              type="checkbox" 
+              checked={selectedCategories.includes(category.id)}
+              onChange={() => onCategorySelect(category.id)}
+            />
 
             <span className="category-icon">
               {category.icon}

@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { BrowserRouter, Routes, Route} from 'react-router-dom';
 import Navbar from './components/Navbar';
 import Homepage from './pages/Homepage';
@@ -8,11 +9,17 @@ import AddCategory from './pages/AddCategory';
 import ManageCategories from './pages/ManageCategories';
 
 function App() {
+
+  const [sidebarOpen, setSidebarOpen] = useState(false);
+
   return (
     <BrowserRouter>
-      <Navbar />
+      <Navbar 
+        sidebarOpen={sidebarOpen}
+        setSidebarOpen={setSidebarOpen}
+      />
       <Routes>
-        <Route path="/" element={<Homepage />} />
+        <Route path="/" element={<Homepage sidebarOpen={sidebarOpen}/>} />
         <Route path="/add-recipe" element={<AddRecipe />} />
         <Route path="/recipe/:id" element={<RecipeDetail/>}/>
         <Route path="/edit-recipe/:id" element={<EditRecipe/>}/>

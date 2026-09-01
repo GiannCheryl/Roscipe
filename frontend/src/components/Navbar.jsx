@@ -1,17 +1,7 @@
-import React from 'react'
-import { useState, useEffect } from 'react';
-import { useNavigate, useLocation } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
-function Navbar() {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [isCategoryOpen, setIsCategoryOpen] = useState(false);
+function Navbar( { sidebarOpen, setSidebarOpen }) {
   const navigate = useNavigate();
-  const location = useLocation();
-
-  useEffect(() => {
-    setIsMenuOpen(false);
-    setIsCategoryOpen(false);
-  }, [location.pathname]);
 
   return (
     <nav className="navbar">
@@ -22,41 +12,13 @@ function Navbar() {
         ROSCIPE
       </button>
 
-      <div className="navbar-menu-container">
         <button 
+          type="button"
           className="menu-button"
-          onClick={() => setIsMenuOpen(!isMenuOpen)}
+          onClick={() => setSidebarOpen(!sidebarOpen)}
         >
           ☰
         </button>
-
-        {isMenuOpen && (
-          <div className="dropdown-menu">
-            <button className="dropdown-item category-button"
-            onClick={() => setIsCategoryOpen(!isCategoryOpen)}>
-              <span>Categories</span>
-              <span>›</span>
-            </button>
-
-            {isCategoryOpen && (
-              <div className="category-dropdown">
-                <button className="dropdown-item">
-                  Add Category
-                </button>
-                <button className="dropdown-item">
-                  Edit Category
-                </button>
-              </div>
-            )}
-
-            <button 
-            className="dropdown-item"
-            onClick={() => navigate('/add-recipe')}>
-              Add Recipe
-            </button>
-          </div>
-        )}
-      </div>
     </nav>
   );
 }

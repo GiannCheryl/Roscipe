@@ -4,10 +4,11 @@ import RecipeCard from "../components/RecipeCard";
 import { supabase } from "../lib/supabase";
 import { useNavigate } from "react-router-dom";
 
-function Homepage() {
+function Homepage({ sidebarOpen }) {
   const [recipes, setRecipes] = useState([]);
   const [search, setSearch] = useState('');
   const [openMenuId, setOpenMenuId] = useState(null);
+  const [selectedCategory, setSelectedCategories] = useState([]);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -35,15 +36,31 @@ function Homepage() {
     const keyword = search.toLowerCase();
 
     // me-return data dengan title atau ingredients, jd nanti bisa di search dengan title atau ingredients
-    return(
-      recipe.title.toLowerCase().includes(keyword) || recipe.ingredients.toLowerCase().includes(keyword) 
-    );
+    const matchesSearch = recipe.title.toLowerCase().includes(keyword) || recipe.ingredients.toLowerCase().includes(keyword);
+
+    const matchesCategory = selectedCategory.length === 0 || selectedCategory.includes(recipe.category_id);
+
+    return matchesSearch && matchesCategory;
   })
+
+  function handleCategorySelect(categoryId) {
+    setSelectedCategories((prev) => {
+      if (prev.includes(categoryId)) {
+        return prev.filter((id) => id !== categoryId);
+      }
+      return [...prev, categoryId];
+    });
+  }
 
   return (
     <div className="homepage">
-      <div className="content">
-        <Sidebar />
+      <div className={`content ${sidebarOpen ? 'sidebar-open' : 'sidebar-closed'}`}>
+        <Sidebar 
+          isOpen={sidebarOpen} 
+          onCategorySelect={handleCategorySelect}
+          selectedCategories={selectedCategory}
+        />
+
         <main className="main-content">
           <div className="welcome"> 
             <h1>ROSCIPE</h1>
