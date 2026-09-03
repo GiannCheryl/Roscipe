@@ -1,3 +1,18 @@
+/* =========================
+   GLOBAL
+========================= */
+
+:root {
+  --wine: #541A1A;
+  --cream: #DCC3AA;
+  --card: #F1E2D1;
+
+  --white: #ffffff;
+  --border: #d8c5b3;
+  --text-dark: #541A1A;
+  --text-muted: #806f63;
+}
+
 * {
   box-sizing: border-box;
   margin: 0;
@@ -6,27 +21,35 @@
 
 body {
   font-family: Arial, sans-serif;
-  background-color: #fff;
-  color: #333;
+  background-color: var(--cream);
+  color: var(--text-dark);
 }
 
-/* Navbar */
+
+/* =========================
+   NAVBAR
+========================= */
+
 .navbar {
   height: 64px;
   display: flex;
   align-items: center;
   justify-content: space-between;
   padding: 0 24px;
-  border-bottom: 1px solid #e5e5e5;
-  background-color: white;
+
+  background-color: var(--wine);
+  border-bottom: 1px solid var(--wine);
 }
 
 .navbar-logo {
   font-size: 24px;
   font-weight: 700;
+
   background: none;
   border: none;
   padding: 0;
+
+  color: var(--cream);
   cursor: pointer;
 }
 
@@ -37,9 +60,15 @@ body {
 .menu-button {
   border: none;
   background: none;
+  color: var(--cream);
   font-size: 26px;
   cursor: pointer;
 }
+
+
+/* =========================
+   NAVBAR DROPDOWN
+========================= */
 
 .dropdown-menu {
   position: absolute;
@@ -48,18 +77,16 @@ body {
 
   width: 200px;
 
-  background-color: white;
-  border: 1px solid #e5e5e5;
+  background-color: var(--card);
+  border: 1px solid var(--border);
   border-radius: 6px;
 
   padding: 8px 0;
-
   z-index: 1000;
 }
 
 .dropdown-item {
   width: 100%;
-
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -69,6 +96,7 @@ body {
   border: none;
   background: none;
 
+  color: var(--text-dark);
   font-size: 14px;
   text-align: left;
 
@@ -76,12 +104,12 @@ body {
 }
 
 .dropdown-item:hover {
-  background-color: #f5f5f5;
+  background-color: var(--cream);
 }
 
 .category-dropdown {
-  border-top: 1px solid #eeeeee;
-  border-bottom: 1px solid #eeeeee;
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
   padding: 4px 0;
 }
 
@@ -90,20 +118,36 @@ body {
   font-size: 13px;
 }
 
-/* Main Layout */
+
+/* =========================
+   MAIN LAYOUT
+========================= */
+
 .main-layout {
   display: flex;
   min-height: calc(100vh - 64px);
 }
 
-/* Sidebar */
+
+/* =========================
+   SIDEBAR
+========================= */
+
 .sidebar {
   width: 320px;
   padding: 30px 24px;
+
   flex-shrink: 0;
-  border-left: 1px solid #e5e5e5;
+
+  background-color: var(--wine);
+
+  border-left: 1px solid var(--wine);
   border-right: none;
-  transition: width 0.3s ease, padding 0.3s ease;
+
+  transition:
+    width 0.3s ease,
+    padding 0.3s ease;
+
   overflow: hidden;
   order: 2;
 }
@@ -117,12 +161,15 @@ body {
   width: 0;
   padding-left: 0;
   padding-right: 0;
+
   border-left: none;
 }
 
 .sidebar h2 {
   font-size: 18px;
   margin-bottom: 20px;
+
+  color: var(--cream);
   text-transform: uppercase;
 }
 
@@ -136,25 +183,34 @@ body {
   display: flex;
   align-items: center;
   gap: 10px;
+
   padding: 15px;
   margin-bottom: 5px;
+
   cursor: pointer;
   justify-content: space-between;
-  border: 1px solid #ddd;
+
+  background-color: transparent;
+  border: 1px solid var(--cream);
   border-radius: 8px;
-  transition: 
-    background-color 0.2s ease, 
+
+  color: var(--cream);
+
+  transition:
+    background-color 0.2s ease,
     transform 0.2s ease;
 }
 
 .sidebar-category-item:hover {
-  background-color: #f9f9f9;
+  background-color: #6b2929;
   transform: translateY(-2px);
 }
 
 .sidebar-category-item.selected {
-  background-color: #e0f7fa;
-  border-color: #00acc1;
+  background-color: var(--cream);
+  border-color: var(--cream);
+  color: var(--wine);
+
   transform: translateX(3px);
 }
 
@@ -171,7 +227,7 @@ body {
 
 .category-count {
   font-size: 13px;
-  color: #777;
+  color: var(--cream);
 }
 
 .category-header {
@@ -183,6 +239,7 @@ body {
 
 .category-header h2 {
   margin: 0;
+  color: var(--cream);
 }
 
 .category-actions {
@@ -193,14 +250,18 @@ body {
 .category-action-button {
   width: 30px;
   height: 30px;
+
   padding: 0;
   border: none;
   border-radius: 4px;
+
   cursor: pointer;
   font-size: 14px;
+
   display: flex;
   align-items: center;
   justify-content: center;
+
   margin-bottom: 6px;
 }
 
@@ -208,12 +269,19 @@ body {
   transform: scale(1.1);
 }
 
-/* Content Sidebar*/
+
+/* =========================
+   CONTENT
+========================= */
+
 .content {
   display: flex;
   align-items: flex-start;
+
   width: 100%;
   padding: 30px;
+
+  background-color: var(--cream);
 }
 
 .content h1 {
@@ -224,7 +292,9 @@ body {
 .main-content {
   flex: 1;
   min-width: 0;
+
   order: 1;
+
   transition: margin-right 0.3s ease;
 }
 
@@ -234,14 +304,39 @@ body {
 
 .welcome {
   height: 100%;
+
   display: flex;
   flex-direction: column;
+
   justify-content: center;
   align-items: center;
+
   text-align: center;
 }
 
-/* Add Recipe */
+
+/* =========================
+   ROSCIPE HOMEPAGE TITLE
+========================= */
+
+.homepage-title {
+  background: linear-gradient(
+    90deg,
+    #541A1A 0%,
+    #8B4A42 50%,
+    #DCC3AA 100%
+  );
+
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+
+/* =========================
+   ADD RECIPE
+========================= */
+
 .add-recipe-page {
   max-width: 800px;
   margin: 0 auto;
@@ -251,12 +346,18 @@ body {
 .add-recipe-page h1 {
   text-align: center;
   margin-bottom: 35px;
+  color: var(--wine);
 }
 
 .add-recipe-button {
   padding: 12px 20px;
+
   border: none;
   border-radius: 8px;
+
+  background-color: var(--wine);
+  color: var(--cream);
+
   cursor: pointer;
   white-space: nowrap;
 }
@@ -275,17 +376,25 @@ body {
 
 .form-group label {
   font-weight: 600;
+  color: var(--wine);
 }
 
 .form-group input,
 .form-group select,
 .form-group textarea {
   width: 100%;
+
   padding: 12px 14px;
-  border: 1px solid #ccc;
+
+  background-color: var(--card);
+  color: var(--wine);
+
+  border: 1px solid var(--border);
   border-radius: 8px;
+
   font-size: 15px;
   font-family: inherit;
+
   box-sizing: border-box;
 }
 
@@ -298,14 +407,21 @@ body {
 .form-group select:focus,
 .form-group textarea:focus {
   outline: none;
-  border-color: #888;
+  border-color: var(--wine);
 }
+
+
+/* =========================
+   FORM BUTTON
+========================= */
 
 .form-button {
   width: 100%;
+
   display: flex;
   justify-content: center;
   align-items: center;
+
   gap: 15px;
   margin-top: 20px;
 }
@@ -313,19 +429,47 @@ body {
 .submit-button,
 .cancel-button {
   width: 200px;
+
   padding: 13px;
+
   border: none;
   border-radius: 8px;
+
   font-size: 16px;
   font-weight: 600;
+
   cursor: pointer;
   margin: 0;
 }
 
-/* success dan delete popup confirmation */
+.submit-button {
+  background-color: var(--wine);
+  color: var(--cream);
+}
+
+.submit-button:hover {
+  background-color: #6b2929;
+}
+
+.cancel-button {
+  border: 1px solid var(--wine);
+  background-color: var(--card);
+  color: var(--wine);
+}
+
+.cancel-button:hover {
+  background-color: var(--cream);
+}
+
+
+/* =========================
+   POPUP
+========================= */
+
 .popup-overlay {
   position: fixed;
   inset: 0;
+
   z-index: 9999;
 
   display: flex;
@@ -333,22 +477,27 @@ body {
   align-items: center;
 
   background: rgba(0, 0, 0, 0.25);
+
   backdrop-filter: blur(6px);
   -webkit-backdrop-filter: blur(6px);
+
   animation: fadeIn 0.3s ease;
 }
 
 .popup {
   width: 360px;
   max-width: 90%;
+
   padding: 32px 28px;
 
-  background: white;
+  background: var(--card);
+
   border-radius: 18px;
 
   text-align: center;
 
   box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+
   animation: popupIn 0.3s ease;
 }
 
@@ -386,8 +535,8 @@ body {
 
   border-radius: 50%;
 
-  background: #e8f5e9;
-  color: #4caf50;
+  background: var(--wine);
+  color: var(--cream);
 
   font-size: 32px;
   font-weight: bold;
@@ -395,12 +544,12 @@ body {
 
 .popup h2 {
   margin: 0 0 8px;
+  color: var(--wine);
 }
 
 .popup p {
   margin: 0 0 24px;
-
-  color: #666;
+  color: var(--text-muted);
 }
 
 .popup button {
@@ -409,8 +558,10 @@ body {
   border: none;
   border-radius: 8px;
 
-  cursor: pointer;
+  background-color: var(--wine);
+  color: var(--cream);
 
+  cursor: pointer;
   font-size: 15px;
 }
 
@@ -426,20 +577,20 @@ body {
   padding: 10px 24px;
 
   border-radius: 8px;
-
   cursor: pointer;
   width: 100px;
 }
 
-.cancel-button {
-  border: 1px solid #ccc;
-  background: white;
+.popup-cancel-button {
+  border: 1px solid var(--wine);
+  background-color: var(--card);
+  color: var(--wine);
 }
 
 .delete-button {
   border: none;
-  background: #d9534f;
-  color: white;
+  background-color: var(--wine);
+  color: var(--cream);
 }
 
 .delete-button:hover {
@@ -447,21 +598,29 @@ body {
   color: white;
 }
 
-.cancel-button:hover {
-  background-color: #ddd;
+.popup-cancel-button:hover {
+  background-color: var(--cream);
 }
 
-/* Recipe Card */
+
+/* =========================
+   RECIPE CARD
+========================= */
+
 .recipe-card {
   position: relative;
-  background: white;
+
+  background: var(--card);
+
   border-radius: 12px;
+
   overflow: visible;
+
   animation: recipeAppear 0.2s ease-in-out;
 }
 
 .recipe-card:hover {
-  background-color: #ededed;
+  background-color: #ead6c2;
   transform: translateY(-2px);
 }
 
@@ -470,6 +629,7 @@ body {
     opacity: 0;
     transform: translateY(10px);
   }
+
   to {
     opacity: 1;
     transform: translateY(0);
@@ -479,28 +639,34 @@ body {
 .recipe-image {
   width: 100%;
   aspect-ratio: 1 / 1;
+
   overflow: hidden;
+
   border-radius: 12px 12px 0 0;
+
+  background: var(--card);
 }
 
 .recipe-image img {
   width: 100%;
   height: 100%;
+
   object-fit: cover;
 }
 
 .no-image {
   width: 100%;
   height: 100%;
+
   display: flex;
   align-items: center;
   justify-content: center;
-  background: #f2f2f2;
-  color: #888;
+
+  background: var(--cream);
+  color: var(--wine);
 }
 
 .recipe-card-footer {
-  position: relative;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -511,31 +677,38 @@ body {
 .recipe-card-footer h3 {
   margin: 0;
   font-size: 16px;
+  color: var(--wine);
 }
 
 .recipe-menu {
   position: relative;
 }
 
-.menu-button {
+.recipe-menu .menu-button {
   border: none;
   background: transparent;
+
+  color: var(--wine);
+
   cursor: pointer;
 
   font-size: 22px;
   line-height: 1;
+
   padding: 4px 8px;
 }
 
 .recipe-dropdown {
   position: absolute;
+
   right: 0;
   top: 100%;
 
   min-width: 140px;
 
-  background: white;
-  border: 1px solid #ddd;
+  background: var(--card);
+
+  border: 1px solid var(--border);
   border-radius: 20px;
 
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.12);
@@ -545,17 +718,21 @@ body {
 
 .recipe-dropdown button {
   width: 100%;
+
   padding: 10px 14px;
 
   border: none;
-  background: white;
+  background: var(--card);
+
+  color: var(--wine);
 
   text-align: left;
+
   cursor: pointer;
 }
 
 .recipe-dropdown button:hover {
-  background: #f5f5f5;
+  background: var(--cream);
 }
 
 .recipe-menu-container {
@@ -563,7 +740,10 @@ body {
 }
 
 
-/* Homepage */
+/* =========================
+   HOMEPAGE
+========================= */
+
 .recipes-section {
   margin-top: 35px;
 }
@@ -571,118 +751,109 @@ body {
 .recipes-header {
   display: flex;
   align-items: center;
+
   gap: 12px;
   margin-bottom: 20px;
 }
 
 .recipes-header h2 {
   margin: 0;
+  color: var(--wine);
 }
 
 .recipes-header span {
-  color: #777;
+  color: var(--text-muted);
   font-size: 14px;
 }
 
 .recipe-grid {
   display: grid;
+
   grid-template-columns: repeat(3, 1fr);
+
   gap: 24px;
+
   min-height: 200px;
 }
 
-.recipe-card {
-  background: white;
-  border-radius: 12px;
-  overflow: visible;
-  position: relative;
-}
 
-.recipe-image {
-  width: 100%;
-  aspect-ratio: 1 / 1;
-  overflow: hidden;
-  border-radius: 12px 12px 0 0;
-  background: #f2f2f2;
-}
+/* =========================
+   SEARCH BOX
+========================= */
 
-.recipe-image img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
-.no-image {
-  height: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: #888;
-}
-
-.recipe-card-footer {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 12px 8px;
-}
-
-.recipe-card-footer h3 {
-  margin: 0;
-  font-size: 16px;
-}
-
-.menu-button {
-  border: none;
-  background: transparent;
-  font-size: 22px;
-  cursor: pointer;
-}
-
-/* Search box */
 .search-box {
   display: flex;
   align-items: center;
+
   gap: 10px;
+
   width: 100%;
   max-width: 650px;
+
   margin: 0 auto;
 }
 
 .search-box input {
   flex: 1;
+
   padding: 12px 15px;
-  border: 1px solid #ddd;
+
+  background-color: var(--card);
+
+  border: 1px solid var(--border);
   border-radius: 8px;
+
+  color: var(--wine);
+
   font-size: 16px;
+
   box-sizing: border-box;
 }
 
-.search-box input:focus {
-  border-color: #999;
+.search-box input::placeholder {
+  color: #9b8170;
 }
 
-/* Recipe Detail */
+.search-box input:focus {
+  outline: none;
+  border-color: var(--wine);
+}
+
+
+/* =========================
+   RECIPE DETAIL
+========================= */
+
 .recipe-detail-page {
   min-height: 100vh;
+
   padding: 30px 8%;
+
+  background-color: var(--cream);
 }
 
 .recipe-detail-page > h1 {
   text-align: center;
+
   margin-bottom: 30px;
+
+  color: var(--wine);
 }
 
 .recipe-detail-grid {
   display: grid;
+
   grid-template-columns: 1fr 2.5fr;
+
   gap: 15px;
 }
 
 .detail-box,
 .detail-image-box {
-  background: #f5e8d7;
+  background: var(--card);
+
   border-radius: 10px;
+
   padding: 25px;
 }
 
@@ -690,20 +861,25 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
+
   min-height: 150px;
 }
 
 .detail-image-box img {
   width: 100%;
   height: 100%;
+
   max-height: 300px;
+
   object-fit: cover;
+
   border-radius: 8px;
 }
 
 .no-detail-image {
   font-size: 24px;
   font-weight: bold;
+  color: var(--wine);
 }
 
 .ingredients-box {
@@ -721,6 +897,8 @@ body {
 .detail-box h2 {
   margin-top: 0;
   margin-bottom: 15px;
+
+  color: var(--wine);
 }
 
 .detail-box ul,
@@ -734,45 +912,71 @@ body {
   line-height: 1.6;
 }
 
-/* Edit Recipe */
+
+/* =========================
+   EDIT RECIPE
+========================= */
+
 .edit-recipe-page {
   max-width: 800px;
+
   margin: 0 auto;
+
   padding: 40px 30px;
 }
 
 
-/* Add Category */
+/* =========================
+   ADD CATEGORY
+========================= */
+
 .add-category-page {
   max-width: 800px;
+
   margin: 0 auto;
+
   padding: 40px 30px;
 }
 
 .add-category-page h1 {
   text-align: center;
+
   margin-bottom: 35px;
+
+  color: var(--wine);
 }
 
 .add-category-form {
   display: flex;
   flex-direction: column;
+
   gap: 20px;
 }
 
-/* Manage Categories */
+
+/* =========================
+   MANAGE CATEGORIES
+========================= */
+
 .manage-categories-page {
   padding: 30px;
+
+  background-color: var(--cream);
 }
 
 .manage-categories-page h1 {
   margin-bottom: 25px;
+
   text-align: center;
+
+  color: var(--wine);
 }
 
 .manage-categories-content {
   display: flex;
+
   gap: 40px;
+
   align-items: flex-start;
 }
 
@@ -782,6 +986,7 @@ body {
 
 .category-list-section h2 {
   margin-bottom: 20px;
+  color: var(--wine);
 }
 
 .edit-category-section {
@@ -790,40 +995,55 @@ body {
 
 .edit-category-section h2 {
   margin-bottom: 20px;
+  color: var(--wine);
 }
 
 .category-item {
   display: flex;
+
   justify-content: space-between;
   align-items: center;
+
   padding: 15px;
   margin-bottom: 10px;
-  border: 1px solid #ddd;
+
+  background-color: var(--card);
+
+  border: 1px solid var(--border);
   border-radius: 8px;
+
   transition:
     background-color 0.2s ease,
     transform 0.2s ease;
 }
 
 .category-item:hover {
-  background-color: #f9f9f9;
+  background-color: #ead6c2;
+
   transform: translateY(-2px);
 }
 
 .category-item.selected {
-  background-color: #e0f7fa;
-  border-color: #00acc1;
+  background-color: var(--wine);
+
+  border-color: var(--wine);
+
+  color: var(--cream);
+
   transform: translateX(3px);
 }
 
 .category-info {
   display: flex;
+
   align-items: center;
+
   gap: 10px;
 }
 
 .category-actions {
   display: flex;
+
   gap: 10px;
 }
 
@@ -833,24 +1053,39 @@ body {
 
 .form-group label {
   display: block;
+
   margin-bottom: 5px;
+
+  color: var(--wine);
 }
 
 .form-group input,
 .form-group textarea {
   width: 100%;
+
   padding: 10px;
+
+  background-color: var(--card);
+
+  color: var(--wine);
+
+  border: 1px solid var(--border);
+
   box-sizing: border-box;
 }
 
 .form-group textarea {
   min-height: 120px;
+
   resize: vertical;
 }
 
 .form-actions {
   display: flex;
+
   gap: 10px;
+
   align-items: center;
+
   justify-content: center;
 }
